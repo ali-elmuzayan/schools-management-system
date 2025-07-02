@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use Inertia\Inertia;
 
 class TeacherController extends Controller
 {
@@ -14,7 +15,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('tenant/teacher/Index');
     }
 
     /**
