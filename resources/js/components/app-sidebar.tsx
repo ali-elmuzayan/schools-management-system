@@ -15,7 +15,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Teachers',
-        href: '/Teachers',
+        href: '/teachers',
         icon: GraduationCap,
     },
     {

@@ -16,7 +16,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 Route::middleware('auth')->group(function() {
-    Route::resource('user', TeacherController::class)->only(['index', 'create', 'store']);
+    Route::resource('teachers', TeacherController::class)->only(['index', 'create', 'store']);
 
 });
 

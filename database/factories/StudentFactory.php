@@ -16,8 +16,11 @@ class StudentFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'name' => fake()->name(),
+            'grade' => $grade=  fake()->numberBetween(1, 12),
+            'age' => $grade + 6,
         ];
     }
 }

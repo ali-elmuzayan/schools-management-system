@@ -14,7 +14,7 @@ trait Tenantable
         return $this->belongsTo(Tenant::class);
     }
 
-    public static function tenantBooted() {
+    public static function bootTenantable() {
 
         static::addGlobalScope(new TenantScope);
 
