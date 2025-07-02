@@ -16,8 +16,11 @@ class SchoolFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            //
+            'name' => fake()->company(),
+            'address' => fake()->address(),
+            'tenant_id' => fake()->numberBetween(1, 10),
         ];
     }
 }

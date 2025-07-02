@@ -11,4 +11,7 @@ class School extends Model
     /** @use HasFactory<\Database\Factories\SchoolFactory> */
     use HasFactory;
     use Tenantable;
+
+        protected $guarded = [];
+
 }

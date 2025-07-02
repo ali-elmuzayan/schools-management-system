@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Tenant;
 
-use App\Models\School;
-use App\Http\Requests\StoreSchoolRequest;
-use App\Http\Requests\UpdateSchoolRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 
-class SchoolController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class SchoolController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSchoolRequest $request)
+    public function store(StoreCourseRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class SchoolController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(School $school)
+    public function show(Course $course)
     {
         //
     }
@@ -43,7 +44,7 @@ class SchoolController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(School $school)
+    public function edit(Course $course)
     {
         //
     }
@@ -51,7 +52,7 @@ class SchoolController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSchoolRequest $request, School $school)
+    public function update(UpdateCourseRequest $request, Course $course)
     {
         //
     }
@@ -59,7 +60,7 @@ class SchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(School $school)
+    public function destroy(Course $course)
     {
         //
     }

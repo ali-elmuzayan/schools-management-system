@@ -14,6 +14,7 @@ type RegisterForm = {
     email: string;
     password: string;
     password_confirmation: string;
+    tenant_id: string;
 };
 
 export default function Register() {
@@ -22,6 +23,7 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        tenant_id: '1',
     });
 
     const submit: FormEventHandler = (e) => {
@@ -54,12 +56,29 @@ export default function Register() {
                     </div>
 
                     <div className="grid gap-2">
+                        {/* this is not good for real app but it is for testing process */}
+                        <Label htmlFor="tenant">Tenant Id</Label>
+                        <Input
+                            id="tenant"
+                            type="number"
+                            required
+                            tabIndex={2}
+                            autoComplete="tenant_id"
+                            value={data.tenant_id}
+                            onChange={(e) => setData('tenant_id', e.target.value)}
+                            disabled={processing}
+                            placeholder="Tenant Id"
+                        />
+                        <InputError message={errors.tenant_id} />
+                    </div>
+
+                    <div className="grid gap-2">
                         <Label htmlFor="email">Email address</Label>
                         <Input
                             id="email"
                             type="email"
                             required
-                            tabIndex={2}
+                            tabIndex={3}
                             autoComplete="email"
                             value={data.email}
                             onChange={(e) => setData('email', e.target.value)}
@@ -75,7 +94,7 @@ export default function Register() {
                             id="password"
                             type="password"
                             required
-                            tabIndex={3}
+                            tabIndex={4}
                             autoComplete="new-password"
                             value={data.password}
                             onChange={(e) => setData('password', e.target.value)}
@@ -91,7 +110,7 @@ export default function Register() {
                             id="password_confirmation"
                             type="password"
                             required
-                            tabIndex={4}
+                            tabIndex={5}
                             autoComplete="new-password"
                             value={data.password_confirmation}
                             onChange={(e) => setData('password_confirmation', e.target.value)}

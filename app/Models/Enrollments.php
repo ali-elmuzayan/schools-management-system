@@ -11,4 +11,6 @@ class Enrollments extends Model
     /** @use HasFactory<\Database\Factories\EnrollmentsFactory> */
     use HasFactory;
     use Tenantable;
+    protected $guarded = [];
+
 }
