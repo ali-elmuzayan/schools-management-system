@@ -3,33 +3,34 @@ import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
+import { __k } from '@/utils/i18n';
 import { Link } from '@inertiajs/react';
 import { Book, BookOpen, Folder, GraduationCap, LayoutGrid, ListCheck, User } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: __k('dashboard'),
         href: '/dashboard',
         icon: LayoutGrid,
     },
     {
-        title: 'Teachers',
+        title: __k('teachers'),
         href: '/teachers',
         icon: GraduationCap,
     },
     {
-        title: 'Students',
+        title: __k('students'),
         href: '/students',
         icon: User,
     },
     {
-        title: 'Courses',
+        title: __k('courses'),
         href: '/courses',
         icon: Book,
     },
     {
-        title: 'Enrollments',
+        title: __k('enrollments'),
         href: '/enrollments',
         icon: ListCheck,
     },

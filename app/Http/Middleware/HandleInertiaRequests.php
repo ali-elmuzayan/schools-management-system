@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\App;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
@@ -35,9 +37,22 @@ class HandleInertiaRequests extends Middleware
      *
      * @return array<string, mixed>
      */
+
     public function share(Request $request): array
     {
         [$message, $author] = str(Inspiring::quotes()->random())->explode('-');
+
+        $locale = App::getLocale();
+        $langPath = base_path("lang/{$locale}");
+
+        $translations = [];
+
+        if (File::exists($langPath)) {
+            foreach (File::files($langPath) as $file) {
+                $filename = pathinfo($file, PATHINFO_FILENAME);
+                $translations[$filename] = require $file->getRealPath();
+            }
+        }
 
         return [
             ...parent::share($request),
@@ -51,6 +66,10 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
+
+            // ✅ Translations from /lang/{locale}/*.php
+            'translations' => $translations,
+            'locale' => $locale,
         ];
     }
 }

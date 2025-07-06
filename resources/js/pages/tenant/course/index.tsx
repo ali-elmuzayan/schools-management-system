@@ -60,9 +60,9 @@ export default function Index() {
         setForm(emptyForm);
     };
 
-    const handleDelete = () => {
+    const handleDelete = (id: number) => {
         if (window.confirm('Are you sure you want to delete this course?')) {
-            router.delete(`/course/${form.id}`);
+            router.delete(`/course/${id}`);
         }
     };
 
