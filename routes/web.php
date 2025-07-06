@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Tenant\CourseController;
 use App\Http\Controllers\Tenant\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+
+Route::prefix('{locale}')->middleware('locale')->group(function () {
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -17,7 +21,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware('auth')->group(function() {
     Route::resource('teachers', TeacherController::class)->only(['index', 'create', 'store']);
-
+    Route::resource('courses', CourseController::class)->only(['index', 'create', 'store']);
 });
 
 
@@ -26,3 +30,6 @@ Route::middleware('auth')->group(function() {
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
+
+
+});

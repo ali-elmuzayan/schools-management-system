@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use Inertia\Inertia;
 
 class CourseController extends Controller
 {
@@ -14,7 +15,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+       
+        return Inertia::render('tenant/course/index', compact('courses')); 
     }
 
     /**

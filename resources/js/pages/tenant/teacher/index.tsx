@@ -5,11 +5,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { router, usePage } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import React, { useState } from 'react';
 
 interface Teacher {
-    id: string;
+    id: number;
     name: string;
     subject: string;
 }
@@ -21,7 +21,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-const emptyForm = { name: '', subject: '' };
+const emptyForm = { id: 0, name: '', subject: '' };
 
 type FormState = typeof emptyForm & { id?: number };
 
@@ -79,7 +79,8 @@ export default function Index() {
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Card className="m6-6 p-6">
+            <Head title="Teachers" />
+            <Card className="m-6 p-6">
                 <div className="mb-4 flex justify-between">
                     <h1 className="text-2xl font-bold">Teachers</h1>
                     <Button onClick={handleOpenAdd}>Add Teacher</Button>
@@ -139,9 +140,9 @@ export default function Index() {
                             </Button>
                         </div>
                     </form>
+                    
                 </DialogContent>
             </Dialog>
         </AppLayout>
     );
 }
-
