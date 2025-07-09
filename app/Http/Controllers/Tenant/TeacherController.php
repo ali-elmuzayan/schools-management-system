@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use App\Http\Requests\StoreTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class TeacherController extends Controller
@@ -21,48 +22,34 @@ class TeacherController extends Controller
         return Inertia::render('tenant/teacher/index', compact('teachers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreTeacherRequest $request)
     {
+        dump(Auth::user()->tenant);
+        dd($request->all());
         $validated = $request->validated();
-
+        $validated = array_merge($validated, ['school_id' => auth()->user()->school_id]);
         Teacher::create($validated);
 
         return redirect()->route('teachers.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Teacher $teacher)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Teacher $teacher)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTeacherRequest $request, Teacher $teacher)
+    public function update(UpdateTeacherRequest $request,  $lang,  $teacher)
     {
+
         $validated = $request->validated();
+
+        $teacher = Teacher::findOrFail($teacher);
+
 
         $teacher->update($validated);
 
@@ -73,8 +60,9 @@ class TeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Teacher $teacher)
+    public function destroy($lang, Teacher $teacher)
     {
+
         $teacher->delete();
         return redirect()->route('teachers.index');
     }

@@ -48,4 +48,12 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the tenant that owns the user.
+     */
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
 }

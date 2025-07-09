@@ -12,7 +12,5 @@ class Tenant extends Model
     protected $guarded = [];
 
 
-    // public function school() {
-    //     return $this->hasMany(School::class)
-    // }
+
 }

@@ -6,22 +6,23 @@ import { type NavItem } from '@/types';
 import { __k } from '@/utils/i18n';
 import { Link } from '@inertiajs/react';
 import { Book, BookOpen, Folder, GraduationCap, LayoutGrid, ListCheck, User } from 'lucide-react';
+import { route } from 'ziggy-js';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
         title: __k('dashboard'),
-        href: '/dashboard',
+        href: route('dashboard'),
         icon: LayoutGrid,
     },
     {
         title: __k('teachers'),
-        href: '/teachers',
+        href: route('teachers.index'),
         icon: GraduationCap,
     },
     {
         title: __k('students'),
-        href: '/students',
+        href: route('students.index'),
         icon: User,
     },
     {

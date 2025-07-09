@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('grade');
             $table->string('age');
             $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
-            $table->foreignId('school_id')->constrained('schools')->onDelete('cascade');
             $table->timestamps();
         });
     }

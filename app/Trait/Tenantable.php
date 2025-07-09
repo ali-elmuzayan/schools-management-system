@@ -14,13 +14,13 @@ trait Tenantable
         return $this->belongsTo(Tenant::class);
     }
 
-    public static function bootTenantable() {
+    // public static function bootTenantable() {
 
-        static::addGlobalScope(new TenantScope);
+    //     static::addGlobalScope(new TenantScope);
 
-        static::creating(function (Model $model){
-    		$model['tenant_id'] =  Auth::user()->tenant_id;
+    //     static::creating(function (Model $model){
+    // 		$model['tenant_id'] =  Auth::user()->tenant_id;
 
-        });
-    }
+    //     });
+    // }
 }
